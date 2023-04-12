@@ -10,41 +10,40 @@ Fake_Useragent.js
 
 ## Scripts
 
-#### Fake Useragent (Javascript)
+#### Fake Useragent (Python)
 
-1. Add the Teleport_Script.lua inside the teleport part. This is the part that the player will touch to teleport.
+1. Load the JSON file with all the useragents.
 
-<p align="left"><img height="40%" src="https://github.com/alexlostorto/ROBLOX/raw/main/git_images/Roblox Teleport Script.PNG" alt="location of black teleport frame"/></p>
+```python
+useragents = json.load(open('useragents.json', 'r'))
+```
 
-2. Change the 'teleportTo' variable to the part which you want the player to teleport to.
+2. Use the imported 'random' module to randomly select a useragent with the corresponding 'software' and 'system'.
 
-```lua
--- Creates the variable for the object to teleport to
-teleportTo = game.Workspace["GYM INDOOR"].Enter
+```python
+useragentsList = []
+for i in range(amount):
+    useragentsList.append(random.choice(useragents[software][system]))
+
+return useragentsList
 ```
 
 #### Fake Useragent (Javascript)
 
-1. Create a screen GUI under 'StarterGUI', this will be the screen fade GUI.
-
-<p align="left"><img height="40%" src="https://github.com/alexlostorto/ROBLOX/raw/main/git_images/Roblox Black Teleport GUI.PNG" alt="location of black teleport frame"/></p>
-
-2. In the screen GUI, add a frame, set its colour to black and visibility to false. Add the Fade_Screen.lua script in the screen GUI too.
-
-<p align="left"><img height="40%" src="https://github.com/alexlostorto/ROBLOX/raw/main/git_images/Roblox Black Teleport Frame.PNG" alt="location of black teleport frame"/></p>
-
-3. Change the 'part' variable to the part which you want to trigger the screen fade.
+1. Use fs.readFileSync() method to read the JSON file with all the useragents.
 
 ```lua
--- The part which triggers the screen fade
-local part = workspace.GYM.GymDoor
+useragents = JSON.parse(fs.readFileSync(USERAGENTS_PATH,'utf8'));
 ```
 
-4. Change the 'duration' variable (in seconds) if you want to make the screen fade longer or shorter.
+2. Use Math.random() to randomly select a useragent with the corresponding 'software' and 'system'.
 
 ```lua
--- How long you want the fade screen to last
-duration = 3
+for (let i = 0; i < amount; i++) {
+    useragentsList.push(useragents[software][system][Math.floor(Math.random() * useragents[software][system].length)]);
+}
+
+return useragentsList
 ```
 
 ## Credits
