@@ -16,7 +16,7 @@ function isNumeric(str) {
            !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
   
-// Use fs.readFileSync() method to read the file=
+// Use fs.readFileSync() method to read the file
 useragents = JSON.parse(fs.readFileSync(USERAGENTS_PATH,'utf8'));
 
 function create(amount=1, software="chrome", system="windows10") {
